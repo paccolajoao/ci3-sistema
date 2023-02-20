@@ -5,6 +5,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data["title"] = "Dashboard - ManyMinds Teste";
+		$data["menu"] = 'HOME';
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/menu');
 		$this->load->view('pages/dashboard');
