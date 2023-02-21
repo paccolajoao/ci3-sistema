@@ -36,7 +36,7 @@
           <li><a href="<?php echo base_url('produtos/index') ?>" class="nav-link px-2 <?= $active_menu["PRODUTOS"] ?>">Produtos</a></li>
         <?php endif;?>
         <?php if($_SESSION["logged_user"][0]["menu_pedidos"] == 1):?>
-          <li><a href="#" class="nav-link px-2 <?= $active_menu["PEDIDOS"] ?>">Pedidos</a></li>
+          <li><a href="<?php echo base_url('pedidos/index') ?>" class="nav-link px-2 <?= $active_menu["PEDIDOS"] ?>">Pedidos</a></li>
         <?php endif;?>
       </ul>
 

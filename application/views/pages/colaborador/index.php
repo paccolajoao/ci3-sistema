@@ -29,7 +29,7 @@
               <td><?php echo ($colaborador["funcao"] == "COLABORADOR") ? '<span class="badge text-bg-primary">COLABORADOR</span>' : '<span class="badge text-bg-warning">FORNECEDOR</span>' ?></td>
               <td><?php echo ($colaborador["status"] == "ATIVO") ? '<span class="badge text-bg-success">ATIVO</span>' : '<span class="badge text-bg-danger">INATIVO</span>' ?></td>
               <td>
-                <a class="btn btn-primary btn-sm" href="<?= base_url() ?>colaborador/edit/<?= $colaborador["id"] ?>"><i class="fa-solid fa-pen"></i></a>
+                <a class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-title="Editar Colaborador" href="<?= base_url() ?>colaborador/edit/<?= $colaborador["id"] ?>"><i class="fa-solid fa-pen"></i></a>
                 <?php echo ($colaborador["status"] == "ATIVO") ? '<a type="button" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-title="Desativar Colaborador" href="'.base_url('colaborador/desativar_colaborador/'.$colaborador["id"]).'"><i class="fa-solid fa-circle-xmark"></i></a>' : '<a type="button" class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-title="Ativar Colaborador" href="'.base_url('colaborador/ativar_colaborador/'.$colaborador["id"]).'"><i class="fa-solid fa-circle-check"></i></a>' ?></td>
               </td>
             </tr>

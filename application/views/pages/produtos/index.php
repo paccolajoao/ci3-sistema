@@ -23,7 +23,7 @@
               <td><?php echo $produto["codigo_barras"] ?></td>
               <td><?php echo ($produto["status"] == "ATIVO") ? '<span class="badge text-bg-success">ATIVO</span>' : '<span class="badge text-bg-danger">INATIVO</span>' ?></td>
               <td>
-                <a class="btn btn-primary btn-sm" href="<?= base_url() ?>produtos/edit/<?= $produto["id"] ?>"><i class="fa-solid fa-pen"></i></a>
+                <a class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-title="Editar Produto" href="<?= base_url() ?>produtos/edit/<?= $produto["id"] ?>"><i class="fa-solid fa-pen"></i></a>
                 <?php echo ($produto["status"] == "ATIVO") ? '<a type="button" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-title="Desativar Produto" href="'.base_url('produtos/desativar_produto/'.$produto["id"]).'"><i class="fa-solid fa-circle-xmark"></i></a>' : '<a type="button" class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-title="Ativar Produto" href="'.base_url('produtos/ativar_produto/'.$produto["id"]).'"><i class="fa-solid fa-circle-check"></i></a>' ?></td>
               </td>
             </tr>
