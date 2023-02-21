@@ -15,7 +15,7 @@
             <th scope="col">Celular</th>
             <th scope="col">Função</th>
             <th scope="col">Status</th>
-            <th scope="col"></th>
+            <th scope="col" width="120"></th>
           </tr>
         </thead>
         <tbody>

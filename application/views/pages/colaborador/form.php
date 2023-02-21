@@ -1,6 +1,8 @@
 <div class="container-fluid">
   <div class="card">
-    <h5 class="card-header">Adicionar Colaborador</h5>
+    <?php if (!isset($colaborador)) echo '<h5 class="card-header">Adicionar Colaborador</h5>';
+          else echo '<h5 class="card-header">Editar Colaborador</h5>';
+    ?>
     <div class="card-body">
       <div class="col error-alert" style="display: none;">
         <div class="alert alert-danger d-flex align-items-center" role="alert">

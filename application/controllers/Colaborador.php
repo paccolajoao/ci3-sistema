@@ -6,12 +6,14 @@ class Colaborador extends CI_Controller {
 	function __construct() { 
         parent::__construct();
 		permission(); 
+		if ($_SESSION["logged_user"][0]["menu_colaboradores"] != 1) {
+			redirect("dashboard");
+		}
         $this->load->model('colaborador_model');
     } 
 
 	public function index()
 	{
-		
 		$data["colaboradores"] = $this->colaborador_model->index();
 		$data["title"] = "Colaboradores - ManyMinds Teste";
 		$data["menu"] = 'COLABORADORES';
