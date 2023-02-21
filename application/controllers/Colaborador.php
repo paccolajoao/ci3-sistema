@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Colaborador extends CI_Controller {
 
 	function __construct() { 
-        parent::__construct(); 
+        parent::__construct();
+		permission(); 
         $this->load->model('colaborador_model');
     } 
 
@@ -61,7 +62,7 @@ class Colaborador extends CI_Controller {
 			$user = array (
 				"id_colaborador" => $id_colaborador,
 				"usuario" => $this->input->post("form-usuario"),
-				"senha" => password_hash($this->input->post("form-senha"), PASSWORD_BCRYPT),
+				"senha" => sha1($this->input->post("form-senha")),
 				"menu_colaboradores" => $this->input->post("form-menu-colaboradores"),
 				"menu_produtos" => $this->input->post("form-menu-produtos"),
 				"menu_pedidos" => $this->input->post("form-menu-pedidos")
@@ -89,7 +90,7 @@ class Colaborador extends CI_Controller {
 			$user = array (
 				"id_colaborador" => $id,
 				"usuario" => $this->input->post("form-usuario"),
-				"senha" => password_hash($this->input->post("form-senha"), PASSWORD_BCRYPT),
+				"senha" => sha1($this->input->post("form-senha")),
 				"menu_colaboradores" => $this->input->post("form-menu-colaboradores"),
 				"menu_produtos" => $this->input->post("form-menu-produtos"),
 				"menu_pedidos" => $this->input->post("form-menu-pedidos")
