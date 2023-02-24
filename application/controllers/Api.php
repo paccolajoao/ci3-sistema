@@ -8,12 +8,7 @@ class Api extends CI_Controller {
         parent::__construct();
         $this->load->model('api_model');
     }
-
-    public function index() 
-    {
-        $this->load->view('welcome_message');
-    }
-
+    
     public function pedidos_finalizados() 
     {
         $headers = $this->input->request_headers();

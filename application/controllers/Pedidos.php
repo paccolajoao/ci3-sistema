@@ -11,6 +11,7 @@ class Pedidos extends CI_Controller {
 			redirect("dashboard");
 		}
         $this->load->model('pedido_model');
+		$this->load->model('log_model');
     }
 
 	public function index()
@@ -47,6 +48,7 @@ class Pedidos extends CI_Controller {
 
 		$id_pedido = $this->pedido_model->store($this->security->xss_clean($pedido));
 		$this->pedido_model->store_itens($id_pedido, $this->security->xss_clean($this->input->post("itens")));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Criou um pedido com id: ' . $id_pedido);
 		redirect("pedidos/index");
 	}
 
@@ -73,21 +75,25 @@ class Pedidos extends CI_Controller {
 		);
 		$this->pedido_model->update($this->security->xss_clean($pedido));
 		$this->pedido_model->update_itens($id, $this->security->xss_clean($this->input->post("itens")));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Editou um pedido com id: ' . $id);
 		redirect("pedidos/index");
 	}
 
 	public function delete($id){
 		$this->pedido_model->delete($this->security->xss_clean($id));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Excluiu um pedido com id: ' . $id);
 		redirect("pedidos/index");
 	}
 
 	public function finalizar_pedido($id) {
 		$this->pedido_model->finalizar_pedido($this->security->xss_clean($id));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Finalizou um pedido com id: ' . $id);
 		redirect("pedidos/index");
 	}
 
 	public function ativar_pedido($id) {
 		$this->pedido_model->ativar_pedido($this->security->xss_clean($id));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Ativou um pedido com id: ' . $id);
 		redirect("pedidos/index");
 	}
 }

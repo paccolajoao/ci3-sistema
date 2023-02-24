@@ -11,6 +11,7 @@ class Produtos extends CI_Controller {
 			redirect("dashboard");
 		}
         $this->load->model('produto_model');
+		$this->load->model('log_model');
     }
 
 	public function index()
@@ -42,7 +43,8 @@ class Produtos extends CI_Controller {
 			"descricao" => $this->input->post("form-descricao"),
 			"status" => $this->input->post("form-status")
 		);
-		$this->produto_model->store($this->security->xss_clean($produto));
+		$id_produto = $this->produto_model->store($this->security->xss_clean($produto));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Adicionou um produto com id: ' . $id_produto);
 		redirect("produtos/index");
 	}
 
@@ -67,18 +69,21 @@ class Produtos extends CI_Controller {
 			"status" => $this->input->post("form-status")
 		);
 		$this->produto_model->update($this->security->xss_clean($produto));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Alterou um produto com id: ' . $id);
 		redirect("produtos/index");
 	}
 
 	public function desativar_produto($id)
 	{
 		$this->produto_model->desativar_produto($this->security->xss_clean($id));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Ativou um produto com id: ' . $id);
 		redirect("produtos/index");
 	}
 
 	public function ativar_produto($id)
 	{
 		$this->produto_model->ativar_produto($this->security->xss_clean($id));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Desativou um produto com id: ' . $id);
 		redirect("produtos/index");
 	}
 }

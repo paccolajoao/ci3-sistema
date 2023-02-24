@@ -11,6 +11,7 @@ class Colaborador extends CI_Controller {
 			redirect("dashboard");
 		}
         $this->load->model('colaborador_model');
+        $this->load->model('log_model');
     } 
 
 	public function index()
@@ -72,6 +73,7 @@ class Colaborador extends CI_Controller {
 			);
 			$this->colaborador_model->store_user($this->security->xss_clean($user));
 		}
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Adicionou um novo colaborador com id: ' . $id_colaborador);
 		redirect("colaborador/index");
 	}
 
@@ -107,18 +109,21 @@ class Colaborador extends CI_Controller {
 
 			$this->colaborador_model->update_permission($this->security->xss_clean($user));
 		}
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Alterou o colaborador com id: ' . $id);
 		redirect("colaborador/index");
 	}
 
 	public function desativar_colaborador($id) 
 	{
 		$this->colaborador_model->desativar_colaborador($this->security->xss_clean($id));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Desativou o colaborador com id: ' . $id);
 		redirect("colaborador/index");
 	}
 
 	public function ativar_colaborador($id) 
 	{
 		$this->colaborador_model->ativar_colaborador($this->security->xss_clean($id));
+		$this->log_model->add_log($this->session->userdata('logged_user')[0]["id"], 'Ativou o colaborador com id: ' . $id);
 		redirect("colaborador/index");
 	}
 }
