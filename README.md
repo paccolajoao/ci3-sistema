@@ -30,3 +30,4 @@ O sistema foi desenvolvido utilizando XAMPP. Segue os requisitos para funcioname
 ### Observações
 1. Não foi utilizada nenhuma biblioteca externa, portanto não há necessidade de rodar composer.
 2. Configurar o arquivo **config.php**, em **_application/config_** caso o diretório de instalação não seja a raíz do servidor local, a variável _base url_.
+3. Qualquer dúvida estou a disposição através do email paccola31@gmail.com
