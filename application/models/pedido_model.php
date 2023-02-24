@@ -34,12 +34,13 @@
 
     public function store($data)
     {
-      $sql = "INSERT INTO pedidos (data_criacao, id_fornecedor, observacao, status)
-              VALUES (?, ?, ?, ?)";
+      $sql = "INSERT INTO pedidos (data_criacao, id_fornecedor, id_responsavel, observacao, status)
+              VALUES (?, ?, ?, ?, ?)";
       $this->db->query($sql, 
         array(
           date("Y-m-d H:i:s"),
           $data["id_fornecedor"],
+          $data["id_responsavel"],
           $data["observacao"],
           $data["status"])
       );

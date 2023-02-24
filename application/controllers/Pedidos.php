@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pedidos extends CI_Controller {
 
-	function __construct() { 
+	function __construct() 
+	{ 
         parent::__construct();
 		permission(); 
 		if ($_SESSION["logged_user"][0]["menu_pedidos"] != 1) {
@@ -39,6 +40,7 @@ class Pedidos extends CI_Controller {
 	{
 		$pedido = array (
 			"id_fornecedor" => $this->input->post("form-fornecedor"),
+			"id_responsavel" => $this->input->post("form-responsavel"),
 			"status" => $this->input->post("form-status"),
 			"observacao" => $this->input->post("form-observacao")
 		);

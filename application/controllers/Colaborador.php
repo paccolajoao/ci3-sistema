@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Colaborador extends CI_Controller {
 
-	function __construct() { 
+	function __construct() 
+	{ 
         parent::__construct();
 		permission(); 
 		if ($_SESSION["logged_user"][0]["menu_colaboradores"] != 1) {
@@ -74,7 +75,8 @@ class Colaborador extends CI_Controller {
 		redirect("colaborador/index");
 	}
 
-	public function alterar($id){
+	public function alterar($id)
+	{
 		$colaborador = array (
 			"id_colaborador" => $id,
 			"nome" => $this->input->post("form-nome"),
@@ -108,12 +110,14 @@ class Colaborador extends CI_Controller {
 		redirect("colaborador/index");
 	}
 
-	public function desativar_colaborador($id) {
+	public function desativar_colaborador($id) 
+	{
 		$this->colaborador_model->desativar_colaborador($this->security->xss_clean($id));
 		redirect("colaborador/index");
 	}
 
-	public function ativar_colaborador($id) {
+	public function ativar_colaborador($id) 
+	{
 		$this->colaborador_model->ativar_colaborador($this->security->xss_clean($id));
 		redirect("colaborador/index");
 	}

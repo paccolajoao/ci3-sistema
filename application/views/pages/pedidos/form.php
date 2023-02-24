@@ -95,6 +95,7 @@
           ?>
           <a class="btn btn-danger mt-3" href="<?php echo base_url("pedidos/index") ?>"><i class="fa-solid fa-ban"></i> Cancelar</a>
         </div>
+        <input type="hidden" name="form-responsavel" id="form-responsavel" value="<?= $_SESSION["logged_user"][0]["id"] ?>">
       <?php echo form_close(); ?>
     </div>
     

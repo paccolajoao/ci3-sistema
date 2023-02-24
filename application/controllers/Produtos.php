@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produtos extends CI_Controller {
 
-	function __construct() { 
+	function __construct() 
+	{ 
         parent::__construct();
 		permission(); 
 		if ($_SESSION["logged_user"][0]["menu_produtos"] != 1) {
@@ -56,7 +57,8 @@ class Produtos extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function alterar($id){
+	public function alterar($id)
+	{
 		$produto = array (
 			"id_produto" => $id,
 			"nome" => $this->input->post("form-nome"),
@@ -68,12 +70,14 @@ class Produtos extends CI_Controller {
 		redirect("produtos/index");
 	}
 
-	public function desativar_produto($id) {
+	public function desativar_produto($id)
+	{
 		$this->produto_model->desativar_produto($this->security->xss_clean($id));
 		redirect("produtos/index");
 	}
 
-	public function ativar_produto($id) {
+	public function ativar_produto($id)
+	{
 		$this->produto_model->ativar_produto($this->security->xss_clean($id));
 		redirect("produtos/index");
 	}
